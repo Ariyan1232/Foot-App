@@ -40,12 +40,6 @@ struct Login: View {
         Color(red: 0.32549020648002625, green: 0.6196078658103943, blue: 0.5411764979362488)
             .ignoresSafeArea()
             VStack {
-                //Back
-                Image(systemName: "arrow.left")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 58, height: 56)
-                    .clipped()
                 //LogoMakr-5DQ6Mt 2
                 Image(uiImage: #imageLiteral(resourceName: "footLogo"))
                     .resizable()
@@ -54,14 +48,14 @@ struct Login: View {
                     .clipped()
                     .frame(width: 86, height: 200)
                 //Username
-                Text("Username").font(.custom("Inter Bold", size: 24)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center)
+                Text("Username").font(.custom("Inter Bold", size: 24)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center).padding()
                 //Personal Use Bevel
                 TextField("Email...", text: $viewModel.email)
                     .padding()
                     .background(Color(#colorLiteral(red: 0.8980392217636108, green: 0.7764706015586853, blue: 0.7411764860153198, alpha: 1)))
                     .cornerRadius(10)
                 //Password
-                Text("Password").font(.custom("Inter Bold", size: 24)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center)
+                Text("Password").font(.custom("Inter Bold", size: 24)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center).padding()
                 //Personal Use Box
                 SecureField("Password...", text: $viewModel.password)
                     .padding()
@@ -72,8 +66,10 @@ struct Login: View {
                     viewModel.signIn()
                 } label: {
                     Text("Sign In")
+                        .padding()
                         .font(.headline)
                         .background(Color(#colorLiteral(red: 0.8980392217636108, green: 0.7764706015586853, blue: 0.7411764860153198, alpha: 1)))
+                        .cornerRadius(10)
                     
                 }
             }

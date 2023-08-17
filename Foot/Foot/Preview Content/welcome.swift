@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct welcome: View {
+    
+    @State private var showSignInView: Bool = false
+    
     var body: some View {
         ZStack {
             Color(red: 0.32549020648002625, green: 0.6196078658103943, blue: 0.5411764979362488)
                 .ignoresSafeArea()
+            //NavigationStack {
+              //  Settings(showSignInView: $showSignInView)
+            //}
             VStack {
                 //Welcome To Foot
-                Text("Welcome To\nFoot").font(.custom("Inter Regular", size: 40)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center)
+                Text("Welcome To Foot").font(.custom("Inter Regular", size: 40)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center)
                 //LogoMakr-5DQ6Mt 3
                 Image(uiImage: #imageLiteral(resourceName: "footLogo"))
                     .resizable()
@@ -38,6 +44,15 @@ struct welcome: View {
                     .fill(Color(#colorLiteral(red: 0.800000011920929, green: 0.6705882549285889, blue: 0.6352941393852234, alpha: 1)))
                     .frame(width: 253, height: 55)
                 }
+            }
+        }
+        .onAppear {
+            let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
+            self.showSignInView = authUser == nil
+        }
+        .fullScreenCover(isPresented: $showSignInView) {
+            NavigationStack {
+                Login()
             }
         }
     }

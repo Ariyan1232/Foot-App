@@ -15,7 +15,8 @@ struct ContentView: View {
                 Color(red: 0.32549020648002625, green: 0.6196078658103943, blue: 0.5411764979362488)
                     .ignoresSafeArea()
                 VStack {
-                    Text("Foot").font(.custom("Inter Regular", size: 40)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center)
+                    Text("Foot").font(.custom("Inter Regular", size: 60)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center)
+                        
                     //LogoMakr-5DQ6Mt 1
                     Image(uiImage: #imageLiteral(resourceName: "footLogo"))
                         .resizable()
@@ -24,7 +25,7 @@ struct ContentView: View {
                         .clipped()
                         .frame(width: 86, height: 200)
                     //Cheesy Quote
-                    Text("Decreasing human impact one step at a time").font(.custom("Inter Regular", size: 24)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center)
+                    Text("Decreasing human impact one step at a time").font(.custom("Inter Regular", size: 24)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center).padding()
                     ZStack {
                         //Personal Use Bevel
                         NavigationLink(destination: Login()) {
@@ -32,14 +33,21 @@ struct ContentView: View {
                                 .fill(Color(#colorLiteral(red: 0.8013455867767334, green: 0.6719616651535034, blue: 0.6343985795974731, alpha: 1)))
                                 .frame(width: 253, height: 55)
                         }
+                        Text("Login")
+                            .font(.title3)
+                            .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                     }
                     
                     ZStack {
                         //Professional Use Bevel
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(#colorLiteral(red: 0.800000011920929, green: 0.6705882549285889, blue: 0.6352941393852234, alpha: 1)))
-                            .frame(width: 253, height: 55)
-                        
+                        NavigationLink(destination: SignUp()) {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(#colorLiteral(red: 0.800000011920929, green: 0.6705882549285889, blue: 0.6352941393852234, alpha: 1)))
+                                .frame(width: 253, height: 55)
+                        }
+                        Text("Sign Up")
+                            .font(.title3)
+                            .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                     }
                 }
             }

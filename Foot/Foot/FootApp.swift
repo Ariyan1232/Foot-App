@@ -16,7 +16,7 @@ struct FootApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            welcome()
         }
     }
 }
