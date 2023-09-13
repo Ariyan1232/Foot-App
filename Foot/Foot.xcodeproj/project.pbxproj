@@ -88,6 +88,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D62D90F2AAE56A7004EA04B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		0DB5713B2A8037E20065789D /* LoginStuff */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +140,7 @@
 				0DFD3EB229CD4223006CF493 /* Assets.xcassets */,
 				0DFD3EB429CD4223006CF493 /* Foot.entitlements */,
 				0DFD3EB529CD4223006CF493 /* Preview Content */,
+				0D62D90F2AAE56A7004EA04B /* Home */,
 			);
 			path = Foot;
 			sourceTree = "<group>";

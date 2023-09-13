@@ -52,7 +52,7 @@ struct welcome: View {
         }
         .fullScreenCover(isPresented: $showSignInView) {
             NavigationStack {
-                Login()
+                Login(showSignInView: $showSignInView)
             }
         }
     }

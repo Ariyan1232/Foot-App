@@ -13,27 +13,18 @@ final class LoginModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     
-    func signIn() {
+    func signIn() async throws {
         guard !email.isEmpty, !password.isEmpty else {
             print("No email or password found.")
             return
         }
-        
-        Task {
-            do {
-                let returnedUserData = try await AuthenticationManager.shared.createUser(email: email, password: password)
-                print("Success")
-                print(returnedUserData)
-            } catch {
-                print("Error: \(error)")
+            try await AuthenticationManager.shared.createUser(email: email, password: password)
             }
-        }
     }
-    
-}
 
 struct Login: View {
     @StateObject private var viewModel = LoginModel()
+    @Binding var showSignInView: Bool
     var body: some View {
         //Foot
         ZStack {
@@ -63,7 +54,14 @@ struct Login: View {
                     .cornerRadius(10)
                 
                 Button {
-                    viewModel.signIn()
+                    Task {
+                        do {
+                            try await viewModel.signIn()
+                            showSignInView = false
+                        } catch {
+                            print("Sign-in error: \(error)")
+                        }
+                    }
                 } label: {
                     Text("Sign In")
                         .padding()
@@ -80,7 +78,7 @@ struct Login: View {
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            Login()
+            Login(showSignInView: .constant(false))
         }
     }
 }

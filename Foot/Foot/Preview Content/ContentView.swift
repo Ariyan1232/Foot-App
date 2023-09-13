@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @Binding var showSignView: Bool
     var body: some View {
         NavigationView {
             ZStack {
@@ -28,7 +30,7 @@ struct ContentView: View {
                     Text("Decreasing human impact one step at a time").font(.custom("Inter Regular", size: 24)).foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))).multilineTextAlignment(.center).padding()
                     ZStack {
                         //Personal Use Bevel
-                        NavigationLink(destination: Login()) {
+                        NavigationLink(destination: Login(showSignInView: $showSignView)) {
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color(#colorLiteral(red: 0.8013455867767334, green: 0.6719616651535034, blue: 0.6343985795974731, alpha: 1)))
                                 .frame(width: 253, height: 55)
@@ -56,6 +58,8 @@ struct ContentView: View {
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationStack {
+            ContentView(showSignView: .constant(false))
+        }
     }
 }
